@@ -2,7 +2,7 @@
 
 ### Overview
 
-This notebook implements a simple collaborative filtering recommender system using gradient descent and tensorflow. It is based on an exercise from the Coursera course: Machine Learning Specialization from Andrew Ng.
+This notebook implements a simple collaborative filtering recommender system using gradient descent and tensorflow. It is based on an exercise from the Coursera course: [Machine Learning Specialization from Andrew Ng](https://www.coursera.org/specializations/machine-learning-introduction).
 
 
 
@@ -31,22 +31,14 @@ To train the model we need data that contains a set of movies and a set of users
 
 The cells can be empty, as users only rate a few movies. In the above example, User 1 gave movie 1 a rating of 5, but did not rate movie 2.
 
-The goal of a collaborative filtering recommender system is to learn two vectors: For each user, a 'parameter vector' $w^{user}$ that embodies the movie tastes of a user. For each movie, a feature vector $x_{movie}$ of the same size which embodies some description of the movie. The dot product of the two vectors plus the bias term should produce an estimate of the rating the user might give to that movie. So one training example from the table above would be: 
-<p style="text-align: center;">$w^{(1)} \cdot x^{(3)} + b^{(1)} = 1$.</p>
-The vectors $w^{(i)}, x^{(j)}$ must have the same length and it is a parameter of the model that is chosen before training. Let's say we choose the length as the number of different movie genres. One possible interpretation then could be, that each entry in the user vector $w^{user}$ represents how much the user likes that genre and the respective entry in the movie vector $x^{movie}$ describes how much that movie fits that genre.
+The goal of a collaborative filtering recommender system is to learn two vectors: For each user, a 'parameter vector' $\mathbf{w}^{user}$ that embodies the movie tastes of a user. For each movie, a feature vector $\mathbf{x}_{movie}$ of the same size which embodies some description of the movie. The dot product of the two vectors plus the bias term should produce an estimate of the rating the user might give to that movie. So one training example from the table above would be:
+$\mathbf{w}^{(1)} \cdot \mathbf{x}^{(3)} + \mathbf{w}^{(1)} = 1$.
+
+The vectors $\mathbf{w}^{(i)}, \mathbf{x}^{(j)}$ must have the same length and it is a parameter of the model that is chosen before training. Let's say we choose the length as the number of different movie genres. One possible interpretation then could be, that each entry in the user vector $\mathbf{w}^{user}$ represents how much the user likes that genre and the respective entry in the movie vector $\mathbf{x}^{movie}$ describes how much that movie fits that genre.
 
 
 
 ### Implementation
-
-The collaborative filtering cost function is given by
-$$J({\mathbf{x}^{(0)},...,\mathbf{x}^{(n_m-1)},\mathbf{w}^{(0)},b^{(0)},...,\mathbf{w}^{(n_u-1)},b^{(n_u-1)}})= \left[ \frac{1}{2}\sum_{j=0}^{n_u-1} \sum_{i=0}^{n_m-1}r(i,j)*(\mathbf{w}^{(j)} \cdot \mathbf{x}^{(i)} + b^{(j)} - y^{(i,j)})^2 \right]
-+ \underbrace{\left[
-\frac{\lambda}{2}
-\sum_{j=0}^{n_u-1}\sum_{k=0}^{n-1}(\mathbf{w}^{(j)}_k)^2
-+ \frac{\lambda}{2}\sum_{i=0}^{n_m-1}\sum_{k=0}^{n-1}(\mathbf{x}_k^{(i)})^2
-\right].}_{regularization}
-\tag{1}$$
 
 The parameters  $\mathbf{X}$, $\mathbf{W}$, and $\mathbf{b}$ will be learned by a simple Gradient Descent.
 
