@@ -32,13 +32,19 @@ To train the model we need data that contains a set of movies and a set of users
 The cells can be empty, as users only rate a few movies. In the above example, User 1 gave movie 1 a rating of 5, but did not rate movie 2.
 
 The goal of a collaborative filtering recommender system is to learn two vectors: For each user, a 'parameter vector' $\mathbf{w}^{user}$ that embodies the movie tastes of a user. For each movie, a feature vector $\mathbf{x}_{movie}$ of the same size which embodies some description of the movie. The dot product of the two vectors plus the bias term should produce an estimate of the rating the user might give to that movie. So one training example from the table above would be:
-$\mathbf{w}^{(1)} \cdot \mathbf{x}^{(3)} + \mathbf{w}^{(1)} = 1$.
+$\mathbf{w}^{(1)} \cdot \mathbf{x}^{(3)} + b^{(1)} = 1$.
 
 The vectors $\mathbf{w}^{(i)}, \mathbf{x}^{(j)}$ must have the same length and it is a parameter of the model that is chosen before training. Let's say we choose the length as the number of different movie genres. One possible interpretation then could be, that each entry in the user vector $\mathbf{w}^{user}$ represents how much the user likes that genre and the respective entry in the movie vector $\mathbf{x}^{movie}$ describes how much that movie fits that genre.
 
 
 
 ### Implementation
+
+We combine all user vectors and movie vectors into matrices $\mathbf{X}$, $\mathbf{W}$ and load the data set into a matrix $\mathbf{Y}$. We also create a binary-valued indicator matrix $\mathbf{R}$, where $\mathbf{R}(i,j) = 1$ if user $j$ gave a rating to movie $i$, and $\mathbf{R}(i,j)=0$ otherwise.
+
+The cost function then is given by
+
+<img src="images/cost_function.png" width="75%">
 
 The parameters  $\mathbf{X}$, $\mathbf{W}$, and $\mathbf{b}$ will be learned by a simple Gradient Descent.
 
