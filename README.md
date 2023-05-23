@@ -20,7 +20,8 @@ The original dataset has  9000 movies rated by 600 users. The dataset has been r
 We will implement the collaborative filtering learning algorithm and apply it to a dataset of movie ratings.
 To train the model we need data that contains a set of movies and a set of users who have rated those movies. This can look like this:
 
-
+<div align="center">
+  
 |               | u<sub>1</sub> | u<sub>2</sub> | u<sub>3</sub> | u<sub>4</sub> |
 | :------------ | ------------- | ------------- | ------------- | ------------- |
 | m<sub>1</sub> | 5             | 4             |               | 2             |
@@ -28,6 +29,8 @@ To train the model we need data that contains a set of movies and a set of users
 | m<sub>3</sub> | 1             | 2             |               | 4             |
 | m<sub>4</sub> |               |               | 3             |               |
 | m<sub>5</sub> | 5             | 3             | 3             | 5             |
+  
+</div>
 
 The cells can be empty, as users only rate a few movies. In the above example, User 1 gave movie 1 a rating of 5, but did not rate movie 2.
 
