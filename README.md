@@ -47,7 +47,9 @@ We combine all user vectors and movie vectors into matrices $\mathbf{X}$, $\math
 
 The cost function then is given by
 
-<img src="images/cost_function.png" width="75%">
+<div align="center">
+  <img src="images/cost_function.png" width="75%">
+</div>
 
 The parameters  $\mathbf{X}$, $\mathbf{W}$, and $\mathbf{b}$ will be learned by a simple Gradient Descent.
 
